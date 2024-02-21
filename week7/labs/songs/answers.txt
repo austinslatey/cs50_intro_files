@@ -1,0 +1,4 @@
+To characterize the audio aura of the listener based to the top 100 songs from 2018, we can analyze the audio features provided in the database, such as:
+danceability, energy, valence, ect. However, this approach may not fully represent the listener's overall prefrences due to limited song selection, time-specific bias,
+and the subjective nature of audio features, suggesting the need for a more comprehensive analysis incorporating longer listening history, user feedback, genre analysis,
+and personalized recommendation systems.

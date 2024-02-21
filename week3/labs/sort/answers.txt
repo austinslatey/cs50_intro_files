@@ -1,0 +1,12 @@
+sort1 uses: Bubble sort O(n^2)
+
+How do you know?: Bubble sort is a sorting algo with a time complexity of O(n^2),
+meaning a slower preformance comparitive to other sorting algos
+
+sort2 uses: merge sort O(n log n)
+
+How do you know?: Fastest Algo
+
+sort3 uses: selection sort O(n^2)
+
+How do you know?: less effcient than O(n log n)

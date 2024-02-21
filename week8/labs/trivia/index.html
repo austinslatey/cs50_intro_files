@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener("DOMContentLoaded", function() {
+                const mcQuestion = document.getElementById("mc-question");
+                const mcOptions = document.querySelectorAll(".mc-option");
+                const mcFeedback = document.getElementById("mc-feedback");
+
+                const frQuestion = document.getElementById("fr-question");
+                const frInput = document.getElementById("fr-input");
+                const frFeedback = document.getElementById("fr-feedback");
+
+                mcOptions.forEach(option => {
+                    option.addEventListener("click", function() {
+                        // Reset the options color
+                        mcOptions.forEach(option => {
+                            option.classList.remove("selected");
+                        });
+
+                        // Mark the selected option
+                        this.classList.add("selected");
+                    });
+                });
+
+                document.getElementById("fr-confirm").addEventListener("click", function() {
+                    // Check the answer
+                    const userAnswer = frInput.value.toLowerCase();
+                    // Replace with the correct answer
+                    const correctAnswer = "example";
+
+                    // Reset the input field color
+                    frInput.classList.remove("correct", "incorrect");
+
+                    if (userAnswer === correctAnswer) {
+                        frInput.classList.add("correct");
+                        frFeedback.textContent = "Correct!";
+                    } else {
+                        frInput.classList.add("incorrect");
+                        frFeedback.textContent = "Incorrect!";
+                    }
+                });
+
+                // Add event listener to submit button for the multiple choice questions
+                document.getElementById("mc-submit").addEventListener("click", function() {
+                    // Get the selected option
+                    const selectedOption = document.querySelector(".mc-option.selected");
+
+                    if (selectedOption) {
+                        const isCorrect = selectedOption.dataset.correct === "true";
+
+                        // Reset the options color
+                        mcOptions.forEach(option => {
+                            option.classList.remove("selected");
+                            option.disabled = true;
+                        });
+
+                        // Change the color of the selected option
+                        selectedOption.classList.add(isCorrect ? "correct" : "incorrect");
+
+                        // Show the feedback
+                        mcFeedback.textContent = isCorrect ? "Correct!" : "Incorrect!";
+                    }
+                });
+            });
+
+        </script>
+   </head>
+
+   <body>
+       <div class="header">
+           <h1>Trivia!</h1>
+       </div>
+
+       <div class="container">
+           <div class="section">
+               <h2>Part 1: Multiple Choice </h2>
+               <hr>
+               <h3 id="mc-question">Which of the following is an alkali metal on the periodic table?:</h3>
+               <ul>
+                   <li>
+                       <button class="mc-option" data-correct="false">Zinc (Zn)</button>
+                   </li>
+                   <li>
+                       <button class="mc-option" data-correct="true">Potassium (K)</button>
+                   </li>
+                   <li>
+                       <button class="mc-option" data-correct="false">Gallium (Ga)</button>
+                   </li>
+               </ul>
+               <button id="mc-submit">Submit</button>
+               <p id="mc-feedback"></p>
+           </div>
+
+           <div class="section">
+               <h2>Part 2: Free Response</h2>
+               <hr>
+               <h3 id="fr-question">In therory, how could one explain a continuity breach in time dilation? :</h3>
+               <input type="text" id="fr-input">
+               <button id="fr-confirm">Confirm</button>
+               <p id="fr-feedback"></p>
+           </div>
+       </div>
+   </body>
+
+   </html>
